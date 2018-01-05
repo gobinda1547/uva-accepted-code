@@ -1,4 +1,4 @@
-package org.ju.cse.gobinda.clock_hands;
+package clock_hands;
 
 import java.io.*;
 import java.util.*;

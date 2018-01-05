@@ -1,4 +1,4 @@
-package org.ju.cse.gobinda.relational_operator;
+package relational_operator;
 
 import java.util.Scanner;
 

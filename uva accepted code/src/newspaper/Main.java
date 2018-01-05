@@ -1,4 +1,4 @@
-package java_template_uva;
+package newspaper;
 
 import java.io.BufferedReader;
 import java.io.IOException;

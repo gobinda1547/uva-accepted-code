@@ -1,7 +1,12 @@
-package Division_of_Nlogonia;
+package One_Two_Three;
 
-import java.io.*;
-import java.util.*;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 public class Main {
 
@@ -9,31 +14,26 @@ public class Main {
 
 		public static void solve(MyScanner in, MyWriter out) throws IOException {
 
-			int t;
-			while ((t = in.nextInt()) != 0) {
-				int a = in.nextInt();
-				int b = in.nextInt();
-				for (int i = 1; i <= t; i++) {
-					int c = in.nextInt();
-					int d = in.nextInt();
+			int x = in.nextInt();
+			for (int total = 1; total <= x; total++) {
 
-					if (a == c || b == d) {
-						out.println("divisa");
-					} else if (c > a && d > b) {
-						out.println("NE");
-					} else if (c < a && d > b) {
-						out.println("NO");
-					} else if (c < a && d < b) {
-						out.println("SO");
-					} else {
-						out.println("SE");
-					}
-
+				char[] ch = in.nextLine().toCharArray();
+				if (ch.length == 5) {
+					out.println("3");
+					continue;
 				}
+
+				if ((ch[0] == 'o' && ch[1] == 'n') || (ch[0] == 'o' && ch[2] == 'e')
+						|| (ch[1] == 'n' && ch[2] == 'e')) {
+					out.println("1");
+					continue;
+				}
+				out.println("2");
 
 			}
 
 		}
+
 	}
 
 	public static void main(String[] arg) {
@@ -75,8 +75,8 @@ public class Main {
 			while (st == null || !st.hasMoreTokens()) {
 				try {
 					st = new StringTokenizer(br.readLine());
-				} catch (IOException e) {
-					e.printStackTrace();
+				} catch (Exception e) {
+					return null;
 				}
 			}
 			return st.nextToken();
@@ -97,10 +97,10 @@ public class Main {
 		public String nextLine() {
 			try {
 				return br.readLine();
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return "";
+			return null;
 		}
 
 	}

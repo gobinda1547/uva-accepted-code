@@ -1,4 +1,4 @@
-package org.ju.cse.gobinda.java_template_with_EOF;
+package the_snail;
 
 import java.io.IOException;
 import java.io.PrintWriter;

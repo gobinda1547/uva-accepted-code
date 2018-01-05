@@ -1,10 +1,11 @@
-package Parking;
+package Maximum_Sum;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -13,21 +14,45 @@ public class Main {
 
 		public static void solve(MyScanner in, MyWriter out) throws IOException {
 
-			int total = in.nextInt();
-			while ((total--) != 0) {
-				int n = in.nextInt();
-				int[] arr = new int[n];
+			String str;
+			while ((str = in.next()) != null) {
+				int x = Integer.parseInt(str);
+				int[][] arr = new int[x][x];
+				for (int i = 0; i < x; i++) {
+					for (int j = 0; j < x; j++) {
+						arr[i][j] = Integer.parseInt(in.next());
+					}
+				}
+				out.println(getMaximumSumSubRectangleOf2DArray(arr));
 
-				for (int i = 0; i < n; i++) {
-					arr[i] = in.nextInt();
-				}
-				int mx = arr[0], mn = arr[0];
-				for (int i = 1; i < n; i++) {
-					mx = Math.max(mx, arr[i]);
-					mn = Math.min(mn, arr[i]);
-				}
-				out.println((mx - mn) * 2);
 			}
+
+		}
+
+		public static int getMaximumSumSubRectangleOf2DArray(int[][] arr) {
+			int row = arr.length;
+			int col = arr[0].length;
+			int[] now = new int[row];
+			int ans = 0;
+			for (int i = 0; i < col; i++) {
+				Arrays.fill(now, 0);
+				for (int j = i; j < col; j++) {
+					for (int k = 0; k < row; k++) {
+						now[k] += arr[j][k];
+					}
+					ans = Math.max(ans, getMaximumSubArraySum(now));
+				}
+			}
+			return ans;
+		}
+
+		public static int getMaximumSubArraySum(int[] arr) {
+			int currentSum = arr[0], globalSum = arr[0];
+			for (int i = 1; i < arr.length; i++) {
+				currentSum = Math.max(arr[i], currentSum + arr[i]);
+				globalSum = Math.max(globalSum, currentSum);
+			}
+			return globalSum;
 		}
 
 	}
@@ -78,22 +103,10 @@ public class Main {
 			return st.nextToken();
 		}
 
-		public int nextInt() {
-			return Integer.parseInt(next());
-		}
-
-		public long nextLong() {
-			return Long.parseLong(next());
-		}
-
-		public double nextDouble() {
-			return Double.parseDouble(next());
-		}
-
 		public String nextLine() {
 			try {
 				return br.readLine();
-			} catch (Exception e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			return null;

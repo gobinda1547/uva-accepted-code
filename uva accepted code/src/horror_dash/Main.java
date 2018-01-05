@@ -1,4 +1,4 @@
-package org.ju.cse.gobinda.horror_dash;
+package horror_dash;
 
 import java.io.*;
 import java.util.*;

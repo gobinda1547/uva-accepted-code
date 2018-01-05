@@ -1,4 +1,4 @@
-package Lotto;
+package Box_of_Bricks;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,40 +11,34 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		PrintWriter out = new PrintWriter(System.out);
-		String str;
-		StringTokenizer st;
+		String str = null;
+		StringTokenizer st = null;
 
-		boolean firstCase = true;
+		int total = 0;
 		while ((str = in.readLine()) != null) {
+			total++;
+			if (total != 1) {
+				out.println();
+			}
 			st = new StringTokenizer(str);
 			int n = Integer.parseInt(st.nextToken());
 			if (n == 0)
 				break;
 			int[] arr = new int[n];
+			st = new StringTokenizer(in.readLine());
+			int sum = 0;
 			for (int i = 0; i < n; i++) {
 				arr[i] = Integer.parseInt(st.nextToken());
+				sum += arr[i];
+			}
+			int avg = sum / n, ans = 0;
+
+			for (int x : arr) {
+				ans += (Math.abs(x - avg));
 			}
 
-			if (firstCase == false) {
-				out.println();
-			}
-			for (int a = 0; a <= n - 6; a++) {
-				for (int b = a + 1; b <= n - 5; b++) {
-					for (int c = b + 1; c <= n - 4; c++) {
-						for (int d = c + 1; d <= n - 3; d++) {
-							for (int e = d + 1; e <= n - 2; e++) {
-								for (int f = e + 1; f <= n - 1; f++) {
-									out.println(String.format("%d %d %d %d %d %d", arr[a], arr[b], arr[c], arr[d],
-											arr[e], arr[f]));
-								}
-							}
-						}
-					}
-				}
-			}
-			firstCase = false;
+			out.println(String.format("Set #%d\nThe minimum number of moves is %d.", total, ans / 2));
 		}
-
 		in.close();
 		out.close();
 		System.exit(0);

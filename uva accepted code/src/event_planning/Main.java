@@ -1,4 +1,4 @@
-package org.ju.cse.gobinda.event_planning;
+package event_planning;
 
 import java.io.IOException;
 import java.io.PrintWriter;

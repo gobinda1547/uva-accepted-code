@@ -1,4 +1,4 @@
-package org.ju.cse.gobinda.cost_cutting;
+package cost_cutting;
 
 import java.io.*;
 import java.util.*;
