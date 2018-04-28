@@ -95,16 +95,4 @@ public class Main {
 		return true;
 	}
 
-	public static boolean isPrime(long x) {
-		if (x < 2)
-			return false;
-		long lastLoop = (long) Math.sqrt(x);
-		for (int i = 2; i <= lastLoop; i++) {
-			if (x % i == 0) {
-				return false;
-			}
-		}
-		return true;
-	}
-
 }
